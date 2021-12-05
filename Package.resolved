@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SlideStyler",
+        "repositoryURL": "https://github.com/dimsumthinking/SlideStyler.git",
+        "state": {
+          "branch": "main",
+          "revision": "49b0290b5096b43a77718aafdd7dd8d9dc625c36",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
