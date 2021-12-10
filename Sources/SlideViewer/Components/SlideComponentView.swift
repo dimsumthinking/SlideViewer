@@ -2,6 +2,8 @@ import SwiftUI
 import SlideStyler
 
 typealias BulletView = SlideComponentView
+typealias TitleView = SlideComponentView
+typealias SubtitleView = SlideComponentView
 
 struct SlideComponentView {
   private(set) var alignment = HorizontalAlignment.center
@@ -15,6 +17,15 @@ extension SlideComponentView: View {
         SingleLineView(line: line)
       }
     }
+  }
+}
+
+extension SlideComponentView {
+  init(component: () -> SlideComponent) {
+    self.init(component: component())
+  }
+  init(contents:() -> String) {
+    self.init(component: SlideComponent(contents: contents()))
   }
 }
 

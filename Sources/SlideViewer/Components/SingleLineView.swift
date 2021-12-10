@@ -15,6 +15,8 @@ extension SingleLineView: View {
   }
 }
 
+
+
 struct SingleLineView_Previews: PreviewProvider {
   static var previews: some View {
       SingleLineView(line: SingleLine(contents:
