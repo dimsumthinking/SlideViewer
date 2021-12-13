@@ -1,39 +1,39 @@
 import SwiftUI
 import SlideStyler
 
-typealias BulletView = SlideComponentView
-typealias TitleView = SlideComponentView
-typealias SubtitleView = SlideComponentView
+typealias SingleBullet = SlideComponent
+typealias TitleView = SlideComponent
+typealias SubtitleView = SlideComponent
 
-struct SlideComponentView {
+struct SlideComponent {
   private(set) var alignment = HorizontalAlignment.center
-  let component: SlideComponent
+  let component: StyledComponent
 }
 
-extension SlideComponentView: View {
+extension SlideComponent: View {
   var body: some View {
     VStack(alignment: alignment) {
       ForEach(component.singleLines){line in
-        SingleLineView(line: line)
+        Line(styledLine: line)
       }
     }
   }
 }
 
-extension SlideComponentView {
-  init(component: () -> SlideComponent) {
+extension SlideComponent {
+  init(component: () -> StyledComponent) {
     self.init(component: component())
   }
-  init(contents:() -> String) {
-    self.init(component: SlideComponent(contents: contents()))
+  init(contents: () -> String) {
+    self.init(component: StyledComponent(contents: contents()))
   }
 }
 
 
 struct SlideComponentView_Previews: PreviewProvider {
   static var previews: some View {
-    SlideComponentView(alignment: .leading,
-                       component: SlideComponent {
+    SlideComponent(alignment: .leading,
+                   component: StyledComponent {
 """
 import SwiftUI
 import SlideStyler
@@ -44,7 +44,7 @@ struct SlideComponentView {
 }
 """
     })
-        .previewLayout(.sizeThatFits)
+      .previewLayout(.sizeThatFits)
   }
 }
 

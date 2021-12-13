@@ -1,36 +1,37 @@
 import SwiftUI
 import SlideStyler
 
-struct BulletedListView {
-  let bulletedList: BulletedList
-  private(set) var spacing: Double = 5
+struct BulletsSlide {
+  let bullets: Bullets
+  private(set) var spacing: Double = 10
 }
 
-extension BulletedListView: View {
+extension BulletsSlide: View {
   var body: some View {
     VStack(alignment: .leading,
     spacing: spacing) {
-      ForEach(bulletedList.bullets){bullet in
+      ForEach(bullets.list){bullet in
         HStack(alignment: .top) {
           Text("•")
-        BulletView(alignment: .leading,
+        SingleBullet(alignment: .leading,
                    component: bullet)
+            .font(.title)
         }
       }
     }
   }
 }
 
-extension BulletedListView {
+extension BulletsSlide {
   init(spacing: Double = 5,
-       bulletedList: () -> BulletedList) {
-    self.init( bulletedList: bulletedList(),
+       bulletedList: () -> Bullets) {
+    self.init( bullets: bulletedList(),
     spacing: spacing)
   }
   
   init(spacing: Double = 5,
        bulletedList: () -> [String]) {
-    self.init( bulletedList: BulletedList(bullets: bulletedList()),
+    self.init( bullets: Bullets(bullets: bulletedList()),
     spacing: spacing)
   }
 }
@@ -38,12 +39,11 @@ extension BulletedListView {
 struct BulletedListView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-    BulletedListView(bulletedList: BulletedList{[
-      "Bullet one\nwith more \nto come",
+    BulletsSlide(bullets: Bullets{[
+      "Bullet one of two\nwith more to come",
       "Bullet two"
     ]})
-        .previewLayout(.sizeThatFits)
-      BulletedListView {[
+      BulletsSlide {[
         "One more"
       ]}
           .previewLayout(.sizeThatFits)

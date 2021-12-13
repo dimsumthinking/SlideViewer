@@ -1,11 +1,11 @@
 import SwiftUI
 import SlideStyler
 
-struct StyledSegmentView {
+struct Segment {
   let segment: StyledSegment
 }
 
-extension StyledSegmentView: View {
+extension Segment: View {
   var body: some View {
     Text(segment.contents)
       .strikethrough(segment.style == .deleted)
@@ -15,10 +15,10 @@ extension StyledSegmentView: View {
 struct StyledSegmentView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
-      StyledSegmentView(segment: StyledSegment(contents: "Hello",
+      Segment(segment: StyledSegment(contents: "Hello",
                                                style: .deleted))
         .previewLayout(.sizeThatFits)
-      StyledSegmentView(segment: StyledSegment(contents: "Hello",
+      Segment(segment: StyledSegment(contents: "Hello",
                                                style: .standard))
         .previewLayout(.sizeThatFits)
     }

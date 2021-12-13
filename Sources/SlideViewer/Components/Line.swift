@@ -1,15 +1,15 @@
 import SwiftUI
 import SlideStyler
 
-struct SingleLineView {
-  let line: SingleLine
+struct Line {
+  let styledLine: StyledLine
 }
 
-extension SingleLineView: View {
+extension Line: View {
   var body: some View {
     HStack(spacing: 0) {
-      ForEach(line.segments){segment in
-        StyledSegmentView(segment: segment)
+      ForEach(styledLine.segments){segment in
+        Segment(segment: segment)
       }
     }
   }
@@ -19,7 +19,7 @@ extension SingleLineView: View {
 
 struct SingleLineView_Previews: PreviewProvider {
   static var previews: some View {
-      SingleLineView(line: SingleLine(contents:
+      Line(styledLine: StyledLine(contents:
 "Hello, <del>Dolly</del>World<strong>!</strong>"
                                      ))
         .previewLayout(.sizeThatFits)

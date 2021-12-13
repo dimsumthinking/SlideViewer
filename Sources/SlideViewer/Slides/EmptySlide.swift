@@ -1,11 +1,11 @@
 import SwiftUI
 import SlideStyler
 
-struct EmptySlideView {
-  let emptySlide = EmptySlide()
+struct EmptySlide {
+  let emptySlide = IntentionallyLeftBlank()
 }
 
-extension EmptySlideView: View {
+extension EmptySlide: View {
   var body: some View {
     EmptyView()
   }
@@ -15,7 +15,7 @@ extension EmptySlideView: View {
 
 struct EmptySlideView_Previews: PreviewProvider {
   static var previews: some View {
-    EmptySlideView()
+    EmptySlide()
   }
 }
 
